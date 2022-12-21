@@ -16,5 +16,6 @@ namespace Acme.BookStore.Books
     {
 
         Task<ListResultDto<AuthorLookupDto>> GetAuthorLookupAsync();
+        Task<ListResultDto<LibraryLookupDto>> GetLibraryLookupAsync();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Acme.BookStore.Authors;
 using Acme.BookStore.Books;
+using Acme.BookStore.Libraries;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -28,6 +29,8 @@ public class BookStoreDbContext :
 {
     public DbSet<Book> Books { get; set; }
     public DbSet<Author> Authors { get; set; }
+
+    public DbSet<Library> Libraries { get; set; }
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
     #region Entities from the modules
@@ -95,6 +98,8 @@ public class BookStoreDbContext :
 
             //Add mapping for author -> book relationship
             b.HasOne<Author>().WithMany().HasForeignKey(x => x.AuthorId).IsRequired();
+
+            b.HasOne<Library>().WithMany().HasForeignKey(x => x.LibraryId).IsRequired();
         });
 
         builder.Entity<Author>(b =>
@@ -111,7 +116,19 @@ public class BookStoreDbContext :
             b.HasIndex(x => x.Name);
         });
 
+        builder.Entity<Library>(b =>
+        {
+            b.ToTable(BookStoreConsts.DbTablePrefix + "Libraries",
+                BookStoreConsts.DbSchema);
 
+            b.ConfigureByConvention();
+
+            b.Property(x => x.Name)
+            .IsRequired()
+            .HasMaxLength(LibraryConsts.LibraryNameMaxLength);
+
+            b.HasIndex(x => x.Name);
+        });
 
 
     }

@@ -83,6 +83,11 @@
                 {{ row.price | currency }}
               </ng-template>
             </ngx-datatable-column>
+            <ngx-datatable-column
+            [name]="'::Library' | abpLocalization"
+            prop="libraryName"
+            [sortable]="false"
+          ></ngx-datatable-column>
           </ngx-datatable>
     </div>
   </div>
@@ -95,6 +100,15 @@
   
     <ng-template #abpBody>
         <form [formGroup]="form" (ngSubmit)="save()">
+          <div class="form-group">
+            <label for="library-id">Library</label><span> * </span>
+            <select class="form-control" id="library-id" formControlName="libraryId">
+              <option [ngValue]="null">Select library</option>
+              <option [ngValue]="library.id" *ngFor="let library of libraries$ | async">
+                {{ library.name }}
+              </option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="author-id">Author</label><span> * </span>
             <select class="form-control" id="author-id" formControlName="authorId">

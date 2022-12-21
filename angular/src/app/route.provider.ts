@@ -35,6 +35,13 @@ function configureRoutes(routesService: RoutesService) {
         parentName: '::Menu:BookStore',
         layout: eLayoutType.application,
         requiredPolicy: 'BookStore.Authors'
+      },
+      {
+        path: '/libraries',
+        name: '::Menu:Libraries',
+        parentName: '::Menu:BookStore',
+        layout: eLayoutType.application,
+        requiredPolicy: 'BookStore.Libraries'
       }
     ]);
   };

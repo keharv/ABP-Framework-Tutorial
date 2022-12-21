@@ -50,6 +50,16 @@
     "Authors": "Authors",
     "AuthorDeletionConfirmationMessage": "Are you sure to delete the author '{0}'?",
     "BirthDate": "Birth date",
-    "NewAuthor": "New author"
+    "NewAuthor": "New author",
+    "Menu:Libraries": "Libraries",
+    "BuiltDate": "Built Date",
+    "Address": "Address",
+    "NewLibrary": "New Library",
+    "BookStore:00002": "There is already a library with the same name: {name}",
+    "Permission:Libraries": "Library Management",
+    "Permissions:Libraries.Create": "Creating the libraries",
+    "Permissions:Libraries.Edit": "Editing the libraries",
+    "Permissions:Libraries.Delete": "Deleting the libraries" 
+
   }
 }
